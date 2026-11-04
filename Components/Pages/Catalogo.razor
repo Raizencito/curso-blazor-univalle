@@ -1,0 +1,67 @@
+@page "/catalogo"
+
+
+<div class="flex flex-col items-center justify-center min-h-screen py-2">
+    @foreach (var cafe in cafes)
+    {
+        <div class="max-w-sm rounded overflow-hidden shadow-lg m-4">
+            <img class="flex items-center justify-center border 2" src="@cafe.Imagen" alt="@cafe.NombreCafe" >
+            <div class="px-6 py-4">
+                <div class="font-bold text-xl mb-2">@cafe.NombreCafe</div>
+                <p class="text-gray-700 text-base">
+                    @cafe.DescripcionCafe
+                </p>
+            </div>
+            <div class="px-6 pt-4 pb-2">
+                <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Precio: @cafe.PrecioCafe Bs.</span>
+            </div>
+        </div>
+    }
+    </div>
+    
+
+@code {
+
+    private List<Cafe> cafes = new List<Cafe>
+    {
+        new Cafe
+        {
+            Imagen = "https://via.placeholder.com/150",
+            NombreCafe = "Café Latte",
+            DescripcionCafe = "Un café espresso con leche vaporizada y espuma de leche.",
+            PrecioCafe = 3.50m
+        },
+        new Cafe
+        {
+            Imagen = "https://via.placeholder.com/150",
+            NombreCafe = "Café Cappuccino",
+            DescripcionCafe = "Un café espresso con leche vaporizada y una capa de espuma de leche.",
+            PrecioCafe = 3.75m
+        },
+        new Cafe
+        {
+            Imagen = "https://via.placeholder.com/150",
+            NombreCafe = "Café Americano",
+            DescripcionCafe = "Un café espresso diluido con agua caliente.",
+            PrecioCafe = 2.50m
+        },
+        new Cafe
+        {
+            Imagen = "https://via.placeholder.com/150",
+            NombreCafe = "Café Mocha",
+            DescripcionCafe = "Un café espresso con chocolate y leche vaporizada.",
+            PrecioCafe = 4.00m
+        },
+    };
+
+    class Cafe
+    {
+        public string Imagen { get; set; }
+        public string NombreCafe { get; set; }
+        public string DescripcionCafe { get; set; }
+        public decimal PrecioCafe { get; set; }
+
+        } 
+
+
+}

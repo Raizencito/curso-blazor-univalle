@@ -278,3 +278,5 @@ wwwroot/           app.css generado — no se edita a mano
 - `*.db` está en `.gitignore`: la base local no se versiona.
 - `RequireConfirmedAccount` está en `true`. El template no manda mails de verdad
   (`IdentityNoOpEmailSender`): muestra el link de confirmación en pantalla.
+#   c u r s o - b l a z o r - u n i v a l l e  
+ 
