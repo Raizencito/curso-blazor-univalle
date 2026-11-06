@@ -1,0 +1,19 @@
+<article class="group flex items-start gap-8 sm:gap-12">
+    <img src="@Imagen" alt="@NombreCafe"
+         class="h-20 w-20 shrink-0 rounded-full object-cover shadow-[0_4px_14px_rgba(60,40,25,0.22)] transition-transform duration-300 group-hover:scale-105 sm:h-[84px] sm:w-[84px]" />
+    <div class="min-w-0 flex-1 pt-3">
+        <div class="flex items-baseline gap-2">
+            <h2 class="font-['Marcellus','Georgia',serif] text-xl uppercase tracking-[0.06em] text-[#3a2a20] sm:text-[25px]">@NombreCafe</h2>
+            <span class="mb-1 min-w-6 flex-1 border-b border-dotted border-[#9c8c80]"></span>
+            <p class="shrink-0 font-['Marcellus','Georgia',serif] text-lg text-[#3a2a20] sm:text-xl">@PrecioCafe Bs.</p>
+        </div>
+        <p class="mt-3 font-['Open_Sans','Segoe_UI',sans-serif] text-base font-light leading-snug text-[#6b4a2b] sm:text-[17px]">@DescripcionCafe</p>
+    </div>
+</article>
+
+@code {
+    [Parameter] public string? Imagen { get; set; }
+    [Parameter] public string? NombreCafe { get; set; }
+    [Parameter] public string? DescripcionCafe { get; set; }
+    [Parameter] public decimal PrecioCafe { get; set; }
+}
