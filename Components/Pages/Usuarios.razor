@@ -1,4 +1,7 @@
 @page "/usuarios"
+@using sharpness_sharp.Data.Models
+@using sharpness_sharp.Data
+@inject ApplicationAuthDbContext _dbService
 
 <HeadContent>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -15,44 +18,20 @@
             <div class="usuario-info">
                 <h2>@usuario.NombreUsuario</h2>
                 <p>Correo: @usuario.CorreoUsuario</p>
-                <p>Tamaño PN: @usuario.tamanoPn</p>
+                <p>Tamaño PN: @usuario.tamano</p>
                 <p>Edad: @usuario.edadUsuario</p>
             </div>
         </div>
     } 
 </div>
 @code {
-    public List<Usuario> lstUsuarios = new()
+    private List<Usuario> lstUsuarios = new();
+    protected override Task OnInitializedAsync()
     {
-        new Usuario("Juan Perez", "juan.perez@example.com", "https://i.pravatar.cc/150?img=12") { tamanoPn = 14.5m, edadUsuario = 28 },
-        new Usuario("María Fernández", "maria.fernandez@example.com", "https://i.pravatar.cc/150?img=47") { tamanoPn = 12.0m, edadUsuario = 24 },
-        new Usuario("Jorge Rojas", "jorge.rojas@example.com", "https://i.pravatar.cc/150?img=33") { tamanoPn = 15.2m, edadUsuario = 35 },
-        new Usuario("Lucía Vargas", "lucia.vargas@example.com", "https://i.pravatar.cc/150?img=45") { tamanoPn = 11.8m, edadUsuario = 22 },
-        new Usuario("Andrés Gutiérrez", "andres.gutierrez@example.com", "https://i.pravatar.cc/150?img=59") { tamanoPn = 13.6m, edadUsuario = 41 },
-        new Usuario("Valeria Quispe", "valeria.quispe@example.com", "https://i.pravatar.cc/150?img=32") { tamanoPn = 12.4m, edadUsuario = 30 },
-        new Usuario("Diego Mamani", "diego.mamani@example.com", "https://i.pravatar.cc/150?img=68") { tamanoPn = 16.1m, edadUsuario = 26 },
-        new Usuario("Sofía Choque", "sofia.choque@example.com", "https://i.pravatar.cc/150?img=44") { tamanoPn = 10.9m, edadUsuario = 19 },
-        new Usuario("Martín Paredes", "martin.paredes@example.com", "https://i.pravatar.cc/150?img=15") { tamanoPn = 14.0m, edadUsuario = 33 },
-        new Usuario("Camila Torrez", "camila.torrez@example.com", "https://i.pravatar.cc/150?img=49") { tamanoPn = 12.7m, edadUsuario = 27 }
-    };
-
-    public class Usuario
-    {
-        public string? NombreUsuario { get; set; }
-        public string? CorreoUsuario { get; set; }
-        public string? ImagenUsuario { get; set; }
-        public decimal tamanoPn { get; set; }
-
-        public int edadUsuario { get; set; }
-
-        public Usuario(string nombre, string correo, string imagen)
-        {
-            NombreUsuario = nombre;
-            CorreoUsuario = correo;
-            ImagenUsuario = imagen;
-            tamanoPn = 0m;
-            edadUsuario = 0;
-        }
+        lstUsuarios = _dbService.Usuarios.ToList();
+        return base.OnInitializedAsync();
     }
+
+   
     
 }
